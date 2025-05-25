@@ -42,7 +42,7 @@ Welcome to my sailing logbook. Below is a list of recorded outings and passages.
   <tbody>
     {% for post in site.posts %}
     <tr>
-      <td>{{ post.date | date: "%B %e, %Y" }}</td>
+      <td>{{ post.start | date: "%B %e, %Y" }}</td>
       <td><a href="{{ post.url }}">{{ post.title }}</a></td>
       <td>{{ post.from | default: "-" }}</td>
       <td>{{ post.to | default: "-" }}</td>
