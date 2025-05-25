@@ -37,7 +37,6 @@ Welcome to my sailing logbook. Below is a list of recorded outings and passages.
       <th>From</th>
       <th>Destination</th>
       <th>Nautical Miles</th>
-      <th>Crew</th>
     </tr>
   </thead>
   <tbody>
