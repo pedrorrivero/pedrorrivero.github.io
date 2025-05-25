@@ -27,14 +27,15 @@ Welcome to my sailing logbook. Below is a list of recorded outings and passages.
   {% endif %}
 {% endfor %}
 
-<p><strong>⛵ Total Miles Sailed:</strong> {{ total_miles }}</p>
+<p><strong>🗺️ Total Miles Sailed:</strong> {{ total_miles }}</p>
 
 <table>
   <thead>
     <tr>
       <th>Date</th>
       <th>Title</th>
-      <th>Location</th>
+      <th>From</th>
+      <th>Destination</th>
       <th>Nautical Miles</th>
       <th>Crew</th>
     </tr>
@@ -45,14 +46,8 @@ Welcome to my sailing logbook. Below is a list of recorded outings and passages.
       <td>{{ post.date | date: "%Y-%m-%d" }}</td>
       <td><a href="{{ post.url }}">{{ post.title }}</a></td>
       <td>{{ post.from | default: "-" }}</td>
+      <td>{{ post.to | default: "-" }}</td>
       <td>{{ post.miles | default: "-" }}</td>
-      <td>
-        {% if post.crew %}
-          {{ post.crew | join: ", " }}
-        {% else %}
-          -
-        {% endif %}
-      </td>
     </tr>
     {% endfor %}
   </tbody>
