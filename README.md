@@ -5,7 +5,7 @@ Built with [Jekyll](https://jekyllrb.com/) and hosted on [GitHub Pages](https://
 
 ## 🌐 Live Site
 
-[https://pedrorivero.github.io](https://pedrorivero.github.io)
+[https://pedrorrivero.github.io](https://pedrorrivero.github.io)
 
 ## 📁 Repository Structure
 
