@@ -1,15 +1,9 @@
-title: Pedro Rivero’s Personal Website
-description: Sharing projects, passions, and ideas.
+title: Pedro Rivero
+description: Sailing Logbook
 baseurl: "" # Change to "/repo-name" for project pages
 url: "https://pedrorivero.github.io" # Update to your actual URL
 theme: minima
 markdown: kramdown
-
-# Custom collections
-collections:
-  sailing:
-    output: true
-    permalink: /sailing/:name/
 
 # Include additional files for GitHub Pages
 include:
