@@ -6,6 +6,20 @@ layout: default
 
 Welcome to my sailing logbook. Below is a list of recorded outings and passages.
 
+{% assign total_days = 0 %}
+{% for post in site.posts %}
+  {% if post.start and post.finish %}
+    {% assign start = post.start | date: "%s" %}
+    {% assign finish = post.finish | date: "%s" %}
+    {% assign seconds = finish | minus: start %}
+    {% assign days = seconds | divided_by: 86400 %}
+    {% assign days = days | plus: 1 %}
+    {% assign total_days = total_days | plus: days %}
+  {% endif %}
+{% endfor %}
+
+<p><strong>🗓️ Total Days at Sea:</strong> {{ total_days }}</p>
+
 {% assign total_miles = 0 %}
 {% for post in site.posts %}
   {% if post.miles %}
@@ -21,7 +35,7 @@ Welcome to my sailing logbook. Below is a list of recorded outings and passages.
       <th>Date</th>
       <th>Title</th>
       <th>Location</th>
-      <th>Conditions</th>
+      <th>Nautical Miles</th>
       <th>Crew</th>
     </tr>
   </thead>
@@ -31,7 +45,7 @@ Welcome to my sailing logbook. Below is a list of recorded outings and passages.
       <td>{{ post.date | date: "%Y-%m-%d" }}</td>
       <td><a href="{{ post.url }}">{{ post.title }}</a></td>
       <td>{{ post.location | default: "-" }}</td>
-      <td>{{ post.conditions | default: "-" }}</td>
+      <td>{{ post.miles | default: "-" }}</td>
       <td>
         {% if post.crew %}
           {{ post.crew | join: ", " }}
