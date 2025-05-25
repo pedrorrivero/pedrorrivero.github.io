@@ -1,20 +1,6 @@
 ---
 layout: default
-title: Sailing
 ---
-
-<!-- <h1>⛵ Sailing Log</h1>
-
-<h2>🧭 Logbook Entries</h2>
-<ul>
-  {% for post in site.sailing %}
-    {% if post.type == "logbook" %}
-      <li>
-        <a href="{{ post.url }}">{{ post.date | date: "%Y-%m-%d" }} — {{ post.title }}</a>
-      </li>
-    {% endif %}
-  {% endfor %}
-</ul> -->
 
 # ⛵ Sailing Log
 
@@ -48,4 +34,3 @@ Welcome to my sailing logbook. Below is a list of recorded outings and passages.
     {% endfor %}
   </tbody>
 </table>
-
