@@ -44,7 +44,7 @@ Welcome to my sailing logbook. Below is a list of recorded outings and passages.
     <tr>
       <td>{{ post.date | date: "%Y-%m-%d" }}</td>
       <td><a href="{{ post.url }}">{{ post.title }}</a></td>
-      <td>{{ post.location | default: "-" }}</td>
+      <td>{{ post.from | default: "-" }}</td>
       <td>{{ post.miles | default: "-" }}</td>
       <td>
         {% if post.crew %}
