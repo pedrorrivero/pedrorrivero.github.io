@@ -6,6 +6,15 @@ layout: default
 
 Welcome to my sailing logbook. Below is a list of recorded outings and passages.
 
+{% assign total_miles = 0 %}
+{% for post in site.posts %}
+  {% if post.miles %}
+    {% assign total_miles = total_miles | plus: post.miles %}
+  {% endif %}
+{% endfor %}
+
+<p><strong>⛵ Total Miles Sailed:</strong> {{ total_miles }}</p>
+
 <table>
   <thead>
     <tr>
