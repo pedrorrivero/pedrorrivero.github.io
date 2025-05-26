@@ -1,0 +1,27 @@
+{% assign wave_height_m = include.wave_height_m | plus: 0 %}
+{% assign scale = "N/A" %}
+{% assign description = "Unknown" %}
+
+{% if wave_height_m == 0 %}
+  {% assign scale = 0 %}{% assign description = "Calm (glassy)" %}
+{% elsif wave_height_m <= 0.1 %}
+  {% assign scale = 1 %}{% assign description = "Calm (rippled)" %}
+{% elsif wave_height_m <= 0.5 %}
+  {% assign scale = 2 %}{% assign description = "Smooth" %}
+{% elsif wave_height_m <= 1.25 %}
+  {% assign scale = 3 %}{% assign description = "Slight" %}
+{% elsif wave_height_m <= 2.5 %}
+  {% assign scale = 4 %}{% assign description = "Moderate" %}
+{% elsif wave_height_m <= 4 %}
+  {% assign scale = 5 %}{% assign description = "Rough" %}
+{% elsif wave_height_m <= 6 %}
+  {% assign scale = 6 %}{% assign description = "Very Rough" %}
+{% elsif wave_height_m <= 9 %}
+  {% assign scale = 7 %}{% assign description = "High" %}
+{% elsif wave_height_m <= 14 %}
+  {% assign scale = 8 %}{% assign description = "Very High" %}
+{% else %}
+  {% assign scale = 9 %}{% assign description = "Phenomenal" %}
+{% endif %}
+
+{{ scale }} — {{ description }}

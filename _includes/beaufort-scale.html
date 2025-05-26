@@ -1,0 +1,33 @@
+{% assign wind_speed_kt = include.wind_speed_kt | plus: 0 %}
+{% assign scale = "N/A" %}
+{% assign description = "Unknown" %}
+
+{% if wind_speed_kt < 1 %}
+  {% assign scale = 0 %}{% assign description = "Calm" %}
+{% elsif wind_speed_kt < 4 %}
+  {% assign scale = 1 %}{% assign description = "Light Air" %}
+{% elsif wind_speed_kt < 7 %}
+  {% assign scale = 2 %}{% assign description = "Light Breeze" %}
+{% elsif wind_speed_kt < 11 %}
+  {% assign scale = 3 %}{% assign description = "Gentle Breeze" %}
+{% elsif wind_speed_kt < 17 %}
+  {% assign scale = 4 %}{% assign description = "Moderate Breeze" %}
+{% elsif wind_speed_kt < 22 %}
+  {% assign scale = 5 %}{% assign description = "Fresh Breeze" %}
+{% elsif wind_speed_kt < 28 %}
+  {% assign scale = 6 %}{% assign description = "Strong Breeze" %}
+{% elsif wind_speed_kt < 34 %}
+  {% assign scale = 7 %}{% assign description = "Near Gale" %}
+{% elsif wind_speed_kt < 41 %}
+  {% assign scale = 8 %}{% assign description = "Gale" %}
+{% elsif wind_speed_kt < 48 %}
+  {% assign scale = 9 %}{% assign description = "Strong Gale" %}
+{% elsif wind_speed_kt < 56 %}
+  {% assign scale = 10 %}{% assign description = "Storm" %}
+{% elsif wind_speed_kt < 64 %}
+  {% assign scale = 11 %}{% assign description = "Violent Storm" %}
+{% else %}
+  {% assign scale = 12 %}{% assign description = "Hurricane Force" %}
+{% endif %}
+
+{{ scale }} — {{ description }}
