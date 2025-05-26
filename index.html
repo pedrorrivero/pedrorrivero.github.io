@@ -12,16 +12,18 @@ Welcome to my sailing logbook. Below is a list of recorded outings and passages.
     {% assign total_miles = total_miles | plus: post.miles %}
   {% endif %}
 {% endfor %}
-<p><strong>🗺️ Total Miles Sailed:</strong> {{ total_miles }}</p>
+<p><strong>🗺️ Total Miles:</strong> {{ total_miles }}</p>
 
 {% assign total_days = 0 %}
 {% for post in site.posts %}
   {% if post.start and post.finish %}
-    {% assign start = post.start | date: "%s" %}
-    {% assign finish = post.finish | date: "%s" %}
-    {% assign seconds = finish | minus: start %}
-    {% assign days = seconds | divided_by: 86400 %}
-    {% assign days = days | plus: 1 %}
+    {% assign start_year = post.start | date: "%Y" %}
+    {% assign finish_year = post.finish | date: "%Y" %}
+    {% assign year_diff = finish_year | minus: start_year %}
+    {% assign start_day = post.start | date: "%j" %}
+    {% assign finish_day = post.finish | date: "%j" %}
+    {% assign finish_day = year_diff | times: 365 | plus: finish_day %}
+    {% assign days = finish_day | minus: start_day | plus: 1 %}
     {% assign total_days = total_days | plus: days %}
   {% endif %}
 {% endfor %}
