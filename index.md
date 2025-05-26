@@ -27,14 +27,13 @@ Welcome to my sailing logbook. Below is a list of recorded outings and passages.
 {% endfor %}
 <p><strong>🗓️ Total Days at Sea:</strong> {{ total_days }}</p>
 
-{% assign total_minutes = 0 %}
+{% assign hours_night = 0 %}
 {% for post in site.posts %}
-  {% if post.minutes_night %}
-    {% assign total_minutes = total_minutes | plus: post.minutes_night %}
+  {% if post.hours_night %}
+    {% assign hours_night = hours_night | plus: post.hours_night %}
   {% endif %}
 {% endfor %}
-{% assign total_hours = total_minutes | divided_by: 60 %}
-<p><strong>🌙 Total night hours:</strong> {{ total_hours }}</p>
+<p><strong>🌙 Total night hours:</strong> {{ hours_night }}</p>
 
 <table>
   <thead>
