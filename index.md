@@ -6,6 +6,14 @@ layout: default
 
 Welcome to my sailing logbook. Below is a list of recorded outings and passages.
 
+{% assign total_miles = 0 %}
+{% for post in site.posts %}
+  {% if post.miles %}
+    {% assign total_miles = total_miles | plus: post.miles %}
+  {% endif %}
+{% endfor %}
+<p><strong>🗺️ Total Miles Sailed:</strong> {{ total_miles }}</p>
+
 {% assign total_days = 0 %}
 {% for post in site.posts %}
   {% if post.start and post.finish %}
@@ -17,17 +25,16 @@ Welcome to my sailing logbook. Below is a list of recorded outings and passages.
     {% assign total_days = total_days | plus: days %}
   {% endif %}
 {% endfor %}
-
 <p><strong>🗓️ Total Days at Sea:</strong> {{ total_days }}</p>
 
-{% assign total_miles = 0 %}
+{% assign total_minutes = 0 %}
 {% for post in site.posts %}
-  {% if post.miles %}
-    {% assign total_miles = total_miles | plus: post.miles %}
+  {% if post.minutes_night %}
+    {% assign total_minutes = total_minutes | plus: post.minutes_night %}
   {% endif %}
 {% endfor %}
-
-<p><strong>🗺️ Total Miles Sailed:</strong> {{ total_miles }}</p>
+{% assign total_hours = total_minutes | divided_by: 60 %}
+<p><strong>🌙 Total night hours:</strong> {{ total_hours }}</p>
 
 <table>
   <thead>
