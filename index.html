@@ -12,19 +12,18 @@ layout: default
     {% assign total_miles = total_miles | plus: post.miles %}
   {% endif %}
 {% endfor %}
-<p><strong>🗺️ Total Miles:</strong> {{ total_miles }}</p>
+{% assign total_miles_tidal = 0 %}
+{% for post in site.posts %}
+  {% if post.miles %}{% if post.tidal %}
+    {% assign total_miles_tidal = total_miles_tidal | plus: post.miles %}
+  {% endif %}{% endif %}
+{% endfor %}
+<p><strong>🗺️ Total Miles:</strong> {{ total_miles }} (tidal {{ total_miles_tidal }})</p>
 
 {% assign total_days = 0 %}
 {% for post in site.posts %}
-  {% if post.start and post.finish %}
-    {% assign start_year = post.start | date: "%Y" %}
-    {% assign finish_year = post.finish | date: "%Y" %}
-    {% assign year_diff = finish_year | minus: start_year %}
-    {% assign start_day = post.start | date: "%j" %}
-    {% assign finish_day = post.finish | date: "%j" %}
-    {% assign finish_day = year_diff | times: 365 | plus: finish_day %}
-    {% assign days = finish_day | minus: start_day | plus: 1 %}
-    {% assign total_days = total_days | plus: days %}
+  {% if post.days %}
+    {% assign total_days = total_days | plus: post.days %}
   {% endif %}
 {% endfor %}
 <p><strong>🗓️ Total Days at Sea:</strong> {{ total_days }}</p>
@@ -52,8 +51,8 @@ layout: default
     <tr>
       <td>{{ post.start | date: "%B %e, %Y" }}</td>
       <td><a href="{{ post.url }}">{{ post.title }}</a></td>
-      <td>{{ post.from | default: "-" }}</td>
-      <td>{{ post.to | default: "-" }}</td>
+      <td>{{ post.origin | default: "-" }}</td>
+      <td>{{ post.destination | default: "-" }}</td>
       <td>{{ post.miles | default: "-" }}</td>
     </tr>
     {% endfor %}
