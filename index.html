@@ -26,7 +26,13 @@ layout: default
     {% assign total_days = total_days | plus: post.days %}
   {% endif %}
 {% endfor %}
-<p><strong>🗓️ Total Days at Sea:</strong> {{ total_days }}</p>
+{% assign total_days_tidal = 0 %}
+{% for post in site.posts %}
+  {% if post.days %}{% if post.tidal %}
+    {% assign total_days_tidal = total_days_tidal | plus: post.days %}
+  {% endif %}{% endif %}
+{% endfor %}
+<p><strong>🗓️ Total Days at Sea:</strong> {{ total_days }} (tidal {{ total_days_tidal }})</p>
 
 {% assign hours_night = 0 %}
 {% for post in site.posts %}
@@ -34,7 +40,13 @@ layout: default
     {% assign hours_night = hours_night | plus: post.hours_night %}
   {% endif %}
 {% endfor %}
-<p><strong>🌙 Total night hours:</strong> {{ hours_night }}</p>
+{% assign hours_night_tidal = 0 %}
+{% for post in site.posts %}
+  {% if post.hours_night %}{% if post.tidal %}
+    {% assign hours_night_tidal = hours_night_tidal | plus: post.hours_night %}
+  {% endif %}{% endif %}
+{% endfor %}
+<p><strong>🌙 Total night hours:</strong> {{ hours_night }} (tidal {{ hours_night_tidal }})</p>
 
 <table>
   <thead>
